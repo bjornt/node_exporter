@@ -1,0 +1,16 @@
+name: bjornt-prometheus-node-exporter
+version: 0.13.0
+summary: Prometheus Node Exporter
+description: |
+  Exporter that exposes information gathered from the node.
+confinement: strict
+apps:
+  node-exporter:
+    command: 'bin/node_exporter'
+    plugs: [network-bind, network]
+    daemon: simple
+parts:
+  node-exporter:
+    plugin: go
+    go-importpath: github.com/prometheus/node_exporter
+    source: .
